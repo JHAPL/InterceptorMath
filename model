@@ -1,0 +1,12 @@
+function f = model(t,Y)
+mass = .0427; %kilograms
+initialPA = 689476; %pressure in pascals
+initialVolume = .01; %volume, including tubes, at time t = 0 in m^3
+bottleVolume = .0074; %cubic meters
+nRT = initialPA * bottleVolume; %ideal gas law
+radius = 0.0285; %meters
+surfaceArea = pi*radius^2; %cross section of ball
+ 
+f(1,1) = Y(2);
+f(2,1) = (nRT*surfaceArea) / (mass * (initialVolume + surfaceArea * Y(1)));
+end
